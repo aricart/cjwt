@@ -51,7 +51,6 @@ func process(data []byte) {
 
 	for i, c := range chunks {
 		if i == 2 {
-			fmt.Println(string(c))
 			continue
 		}
 		d, err := base64.RawURLEncoding.DecodeString(string(c))
