@@ -1,5 +1,6 @@
 project_name: cjwt
 release:
+  draft: true
   github:
     owner: aricart
     name: cjwt
