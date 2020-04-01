@@ -12,12 +12,9 @@ git:
 env:
   - GO111MODULE=off
 
-after_success:
-  - git reset --hard
-
 deploy:
   - provider: script
-    skip_cleanup: true
+    cleanup: true
     script: curl -sL http://git.io/goreleaser | bash
     on:
       tags: true
