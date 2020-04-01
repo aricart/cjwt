@@ -8,4 +8,4 @@
 cjwt [filepath] | [stdin]
 ```
 
-Simply specify a file path or pipe the JWT through stdin
+Simply specify a file path or pipe the JWT through stdin.
