@@ -1,0 +1,46 @@
+project_name: cjwt
+release:
+  github:
+    owner: aricart
+    name: cjwt
+  name_template: '{{.Tag}}'
+builds:
+  - main: main.go
+    binary: cjwt
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+dist: build
+
+archives:
+  - id: "cjwt.zip"
+    wrap_in_directory: false
+    name_template: '{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    format: zip
+    files:
+      - none*
+
+checksum:
+  name_template: '{{ .ProjectName }}-v{{ .Version }}-checksums.txt'
+
+snapshot:
+  name_template: 'dev'
+
+brews:
+  - name: cjwt
+    folder: Formula
+    github:
+      owner: aricart
+      name: homebrew-tools
+    url_template: "https://github.com/aricart/cjwt/releases/download/{{ .Tag }}/{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}.zip"
+    homepage: "https://github.com/aricart/cjwt"
+    description: "tool for inspecting jwts"
+    skip_upload: false
+    test: |
+      system "#{bin}/cjwt --help"
+    install: |
+      bin.install "cjwt"
